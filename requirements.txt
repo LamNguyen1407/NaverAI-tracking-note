@@ -1,0 +1,21 @@
+# FastAPI & Web Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+
+# AI/ML
+google-generativeai==0.3.0
+
+# HTTP Client
+httpx==0.25.2
+
+# MinIO (S3-compatible storage)
+minio==7.2.0
+
+# Supabase (Database & Auth)
+supabase==2.3.5
+python-dotenv==1.0.0
+
+# Utilities
+pydantic==2.5.0
+pydantic[email]==2.5.0
