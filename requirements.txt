@@ -1,22 +1,22 @@
 --only-binary=:all:
 # FastAPI & Web Framework
-fastapi==0.104.1
-uvicorn==0.24.0
-python-multipart==0.0.6
+fastapi==0.121.0
+uvicorn==0.38.0
+python-multipart==0.0.20
 
 # AI/ML
-google-generativeai==0.3.0
+google-generativeai==0.8.5
 
 # HTTP Client
-httpx==0.25.2
+httpx==0.28.1
 
 # MinIO (S3-compatible storage)
-minio==7.2.0
+minio==7.2.18
 
 # Supabase (Database & Auth)
-supabase==2.3.5
-python-dotenv==1.0.0
+supabase==2.24.0
+python-dotenv==1.2.1
 
 # Utilities
-pydantic==2.5.0
-pydantic[email]==2.5.0
+pydantic==2.12.3
+pydantic[email]==2.12.3
