@@ -6,6 +6,10 @@ from fastapi.responses import StreamingResponse
 import os
 from dotenv import load_dotenv
 
+from api.v1.auth_router import router as auth_router
+from api.v1.file_router import router as file_router
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # GN
 from fastapi.responses import JSONResponse
@@ -26,6 +30,15 @@ app = FastAPI()
 
 load_dotenv()  # Load environment variables from .env file
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # MinIO client configuration
 client = Minio(
     os.getenv("MINIO_ENDPOINT"),
@@ -37,12 +50,16 @@ client = Minio(
 # Ensure the bucket exists
 BUCKETS = ['note', 'document']
 
-for bucket in BUCKETS:
-    if not client.bucket_exists(bucket):
-        client.make_bucket(bucket)
-        print(f"Bucket '{bucket}' created.")
-    else:
-        print(f"Bucket '{bucket}' already exists.")
+# for bucket in BUCKETS:
+#     if not client.bucket_exists(bucket):
+#         client.make_bucket(bucket)
+#         print(f"Bucket '{bucket}' created.")
+#     else:
+#         print(f"Bucket '{bucket}' already exists.")
+        
+        
+app.include_router(auth_router)
+app.include_router(file_router)
         
         
 # API 1: Upload file to MinIO
